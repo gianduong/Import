@@ -10,6 +10,7 @@ using MySqlConnector;
 using System.Data.Common;
 using Microsoft.Extensions.Configuration;
 using MISA.CukCuk.Core.Entities;
+using MISA.Common.Entities;
 
 namespace MISA.CukCuk.Infrastructure.Repository
 {
@@ -98,6 +99,24 @@ namespace MISA.CukCuk.Infrastructure.Repository
             // thực hiện 
             var res = _dbConnection.ExecuteScalar<bool>(sqlCommand, _parameters, commandType: CommandType.StoredProcedure);
             return res;
+        }
+
+        public bool DuplicateDataDB(List<Customer> entities, String duplicateName, String duplicateValue)
+        {
+            // thực hiện 
+            for(int i = 0; i < entities.Count; i++)
+            {
+                var checkValue = entities[i].GetType().GetProperty(duplicateName).GetValue(entities[i]);
+                if(checkValue != null)
+                {
+                    String check = checkValue.ToString();
+                    if (check == duplicateValue)
+                    {
+                        return true;
+                    }
+                }              
+            }
+            return false;
         }
 
         public bool CheckGroupNameExists(T entity, string groupName)

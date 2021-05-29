@@ -25,6 +25,6 @@ namespace MISA.CukCuk.Core.Interfaces.Services
         /// CreatedBy: NgDuong (27/05/2021)
         List<T> ImportFromExcel(List<T> entities);
 
-        Task<List<Customer>> ImportExcel(IFormFile formFile, CancellationToken cancellationToken);
+        Task<List<Customer>> FomatFileFromExcel(IFormFile formFile, CancellationToken cancellationToken);
     }
 }

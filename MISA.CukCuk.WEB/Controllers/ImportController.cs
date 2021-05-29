@@ -58,43 +58,9 @@ namespace MISA.CukCuk.WEB.Controllers
             {
                 return ResponseExcel<List<Customer>>.GetResult(-1, Properties.Resources.WrongFile);
             }
-            
-            var list = new List<Customer>();
 
-            using (var stream = new MemoryStream())
-            {
-                await formFile.CopyToAsync(stream, cancellationToken);
-
-                using (var package = new ExcelPackage(stream))
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
-                    var rowCount = worksheet.Dimension.Rows;
-
-                    for (int row = 3; row <= rowCount; row++)
-                    {
-                        Customer cus = new Customer();
-                        if (worksheet.Cells[row, 9].Value != null)
-                        {
-                            cus.Email = worksheet.Cells[row, 9].Value.ToString().Trim();
-                        }
-                        if (worksheet.Cells[row, 10].Value != null)
-                        {
-                            cus.Address = worksheet.Cells[row, 10].Value.ToString().Trim();
-                        }
-                        if (worksheet.Cells[row, 6].Value != null)
-                            cus.DateOfBirth = DateTime.ParseExact(worksheet.Cells[row, 6].Value.ToString().Trim(), new string[] { "dd/MM/yyyy", "d/MM/yyyy", "dd/M/yyyy", "d/M/yyyy", "dd/MM/yyyy", "M/yyyy", "yyyy", "MM/yyyy" }, CultureInfo.InvariantCulture);
-                        cus.CustomerCode = worksheet.Cells[row, 1].Value.ToString().Trim();
-                        cus.FullName = (worksheet.Cells[row, 2].Value.ToString().Trim());
-                        cus.CompanyTaxCode = (worksheet.Cells[row, 3].Value.ToString().Trim());
-                        cus.PhoneNumber = worksheet.Cells[row, 5].Value.ToString().Trim();
-                        cus.CompanyName = worksheet.Cells[row, 7].Value.ToString().Trim();
-                        cus.MemberCardCode = worksheet.Cells[row, 8].Value.ToString().Trim();
-                        cus.Note = worksheet.Cells[row, 11].Value.ToString().Trim();
-                        cus.CustomerGroupName = worksheet.Cells[row, 4].Value.ToString().Trim();
-                        list.Add(cus);
-                    }
-                }
-            }
+            var list = await _baseImport.FomatFileFromExcel(formFile, cancellationToken);
+      
             // add list to db ..  
             var successList = _baseImport.ImportFromExcel(list);
             var amount = successList.Count;

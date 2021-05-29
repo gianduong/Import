@@ -1,4 +1,5 @@
-﻿using MISA.CukCuk.Core.Entities;
+﻿using MISA.Common.Entities;
+using MISA.CukCuk.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,8 @@ namespace MISA.CukCuk.Core.Interfaces.Services
         /// </returns>
         /// Createdby: NGDuong (20/05/2021)
         public bool validateReturnBool(T entity);
+
+        public bool validateReturnBoolDB(T entity, List<Customer> entities);
         #endregion
 
     }

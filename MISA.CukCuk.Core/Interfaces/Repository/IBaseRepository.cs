@@ -1,4 +1,5 @@
-﻿using MISA.CukCuk.Core.Entities;
+﻿using MISA.Common.Entities;
+using MISA.CukCuk.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -53,7 +54,7 @@ namespace MISA.CukCuk.Core.Interfaces.Repository
         /// Createdby: NGDuong (20/05/2021)
         public bool DuplicateData(T entity, String duplicateName, String duplicateValue);
 
-        
+        public bool DuplicateDataDB(List<Customer> entities, String duplicateName, String duplicateValue);
         public bool CheckGroupNameExists(T entity, String groupName);
         #endregion
 

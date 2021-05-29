@@ -1,8 +1,11 @@
-﻿using MISA.CukCuk.Core.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using MISA.Common.Entities;
+using MISA.CukCuk.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Core.Interfaces.Repository
@@ -24,5 +27,7 @@ namespace MISA.CukCuk.Core.Interfaces.Repository
         /// </returns>
         /// CreatedBy: NGDuong (28/05/2021)   
         public bool CheckExistsInExcelFile(List<T> entities, int index);
+
+        Task<List<Customer>> ImportExcel(IFormFile formFile, CancellationToken cancellationToken);
     }
 }
