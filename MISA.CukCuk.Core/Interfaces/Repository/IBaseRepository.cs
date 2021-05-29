@@ -53,15 +53,7 @@ namespace MISA.CukCuk.Core.Interfaces.Repository
         /// Createdby: NGDuong (20/05/2021)
         public bool DuplicateData(T entity, String duplicateName, String duplicateValue);
 
-        /// <summary>
-        /// Check nhóm khách hàng có tồn tại hay không
-        /// </summary>
-        /// <param name="groupName">Tên nhóm khách hàng</param>
-        /// <returns>
-        /// true: có trùng
-        /// false: không trùng
-        /// </returns>
-        /// CreatedBy: NGDuong (28/05/2021)
+        
         public bool CheckGroupNameExists(T entity, String groupName);
         #endregion
 

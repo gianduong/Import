@@ -39,12 +39,14 @@ namespace MISA.CukCuk.Core.Services
 
         public bool validateReturnBool(T entity)
         {
+            // lấy status để so sánh với kết quả sau khi check validate
             String CheckStatus = entity.Status;
             var properties = typeof(T).GetProperties();
             foreach (var prop in properties)
             {
+                // kiểm tra tồn tại Attribute
                 var attributeDuplicate = prop.GetCustomAttributes(typeof(Duplicate), true);
-                if (attributeDuplicate.Length > 0)
+                if (attributeDuplicate.Length > 0 && prop.GetValue(entity) != null)
                 {
                     //lay gia tri cua propery
                     var propetyValue = prop.GetValue(entity);
@@ -53,13 +55,15 @@ namespace MISA.CukCuk.Core.Services
                     if (_baseRepository.DuplicateData(entity, prop.Name, prop.GetValue(entity).ToString()))
                     {
                         String propNameVN;
-                        
-                        if (prop.Name == "PhoneNumber") propNameVN = "SĐT";
-                        else propNameVN = "Mã khách hàng";
-                        entity.Status += $", {propNameVN} đã tồn tại trong hệ thống!";
+                        //kiểm tra loại dữ liệu
+                        if (prop.Name == Properties.Resources.PhoneName) propNameVN = Properties.Resources.PhoneNumber;
+                        else propNameVN = Properties.Resources.CustomerCode;
+                        // thông báo
+                        entity.Status += string.Format(Properties.Resources.ValidateMsg_Exists, propNameVN);
                     }
                 }
             }
+            // kiểm tra
             if(entity.Status != CheckStatus)
                 return true;
             return false;

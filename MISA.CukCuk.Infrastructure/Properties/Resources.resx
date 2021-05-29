@@ -117,60 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CustomerCode" xml:space="preserve">
-    <value>Mã khách hàng</value>
-    <comment>Mã khách hàng</comment>
+  <data name="Message_Code_DB" xml:space="preserve">
+    <value>Mã khách hàng đã tồn tại trong hệ thống.</value>
+    <comment>Thông báo trùng mã trong DB</comment>
   </data>
-  <data name="CustomerCode_Null" xml:space="preserve">
-    <value>Mã khách hàng không được phép để trống.</value>
-    <comment>Mã khách hàng trống</comment>
+  <data name="Message_Code_Excel" xml:space="preserve">
+    <value>Mã khách hàng đã trùng với khách hàng khác trong tệp nhập khẩu.</value>
+    <comment>Thông báo trùng mã</comment>
   </data>
-  <data name="ErrorException" xml:space="preserve">
-    <value>Có lỗi xảy ra, vui lòng liên hệ MISA để được trợ giúp.</value>
-    <comment>Thông báo cho dev</comment>
+  <data name="Message_group" xml:space="preserve">
+    <value>Nhóm khách hàng không có trong hệ thống.</value>
+    <comment>Thông báo của group</comment>
   </data>
-  <data name="Error_Email" xml:space="preserve">
-    <value>Vui lòng nhập đúng định dạng Email.</value>
-    <comment>Sai định dạng email</comment>
+  <data name="Message_PhoneNumber_DB" xml:space="preserve">
+    <value>SĐT đã có trong hệ thống.</value>
+    <comment>Thông báo trùng SĐT trong DB</comment>
   </data>
-  <data name="Message_Correct" xml:space="preserve">
-    <value>Hợp lệ</value>
-    <comment>Dữ liệu kiểm tra hợp lệ</comment>
-  </data>
-  <data name="moreInfo" xml:space="preserve">
-    <value>Lỗi người dùng nhập sai định dạng.</value>
-    <comment>Thông tin lỗi</comment>
-  </data>
-  <data name="PhoneName" xml:space="preserve">
-    <value>PhoneNumber</value>
-    <comment>PhoneName</comment>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>SĐT</value>
-    <comment>Số điện thoại</comment>
-  </data>
-  <data name="Regex_Email" xml:space="preserve">
-    <value>@"[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"</value>
-    <comment>Dữ liệu hợp lệ</comment>
-  </data>
-  <data name="userMsg" xml:space="preserve">
-    <value>Dữ liệu không hợp lệ, vui lòng kiểm tra lại.</value>
-    <comment>Thông báo cho người dùng</comment>
-  </data>
-  <data name="ValidateMsg_CustomerCodeExists" xml:space="preserve">
-    <value>Mã khách hàng đã tồn tại trong hệ thống, vui lòng kiểm tra lại.</value>
-    <comment>Thông báo lỗi của mã khách hàng</comment>
-  </data>
-  <data name="ValidateMsg_EmailExists" xml:space="preserve">
-    <value>Email đã tồn tại trong hệ thống, vui lòng kiểm tra lại.</value>
-    <comment>Thông báo lỗi của Email</comment>
-  </data>
-  <data name="ValidateMsg_Exists" xml:space="preserve">
-    <value>{0} đã tồn tại trong hệ thống.</value>
-    <comment>Đã tồn tại trong hệ thống</comment>
-  </data>
-  <data name="ValidateMsg_PhoneNumberExists" xml:space="preserve">
-    <value>Số điện thoại đã tồn tại trong hệ thống, vui lòng kiểm tra lại.</value>
-    <comment> Thông báo lỗi của PhoneNumber</comment>
+  <data name="Message_PhoneNumber_Excel" xml:space="preserve">
+    <value>SĐT đã trùng với SĐT của khách hàng khác trong tệp nhập khẩu.</value>
+    <comment>Thông báo trùng SĐT</comment>
   </data>
 </root>

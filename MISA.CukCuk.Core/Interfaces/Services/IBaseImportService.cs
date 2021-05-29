@@ -1,8 +1,11 @@
-﻿using MISA.CukCuk.Core.Entities;
+﻿using Microsoft.AspNetCore.Http;
+using MISA.Common.Entities;
+using MISA.CukCuk.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MISA.CukCuk.Core.Interfaces.Services
@@ -21,5 +24,7 @@ namespace MISA.CukCuk.Core.Interfaces.Services
         /// <returns> số lượng bảng import được</returns>
         /// CreatedBy: NgDuong (27/05/2021)
         List<T> ImportFromExcel(List<T> entities);
+
+        Task<List<Customer>> ImportExcel(IFormFile formFile, CancellationToken cancellationToken);
     }
 }

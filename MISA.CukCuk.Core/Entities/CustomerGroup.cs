@@ -31,7 +31,7 @@ namespace MISA.Common.Entities
         /// <summary>
         /// Tên nhóm khách hàng
         /// </summary>
-        [Required("Tên nhóm không được phép để trống!")]
+        [Required(ErrorsMsg.CheckCustomerGroupName)]
         public string CustomerGroupName { get; set; }
         /// <summary>
         /// Mô tả nếu có

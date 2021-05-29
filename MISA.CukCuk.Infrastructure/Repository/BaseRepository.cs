@@ -30,6 +30,7 @@ namespace MISA.CukCuk.Infrastructure.Repository
         protected DynamicParameters _parameters;
         String _tableName;
         public DbConnection _dbConnection => new MySqlConnection(_connectionString);
+        ICustomerGroupRepository _customerGroupRepository;
         #endregion
 
         #region Constructure
@@ -56,7 +57,7 @@ namespace MISA.CukCuk.Infrastructure.Repository
             var entities = _dbConnection.Query<T>(sqlCommand, commandType: CommandType.StoredProcedure);
             return entities;
         }
-        
+
         /// <summary>
         /// thêm một hàng vào trong table
         /// </summary>
@@ -107,9 +108,14 @@ namespace MISA.CukCuk.Infrastructure.Repository
             var res = _dbConnection.ExecuteScalar<bool>(sqlCommand, _parameters, commandType: CommandType.StoredProcedure);
             if (res == false)
             {
-                entity.Status += "Nhóm khách hàng không có trong hệ thống.";
+                entity.Status += Properties.Resources.Message_group;
                 return false;
             }
+            //if(_customerGroupRepository.MergeGroupNameWithGroupId(groupName) != null)
+            //{
+            //    //entity.GetType().GetProperty("CustomerGroupId").SetValue(entity, _customerGroupRepository.MergeGroupNameWithGroupId(groupName));
+            //}
+            
             return true;
         }
         #endregion

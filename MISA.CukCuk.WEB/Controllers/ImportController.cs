@@ -7,6 +7,7 @@ using MISA.CukCuk.Core.Services;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -57,7 +58,7 @@ namespace MISA.CukCuk.WEB.Controllers
             {
                 return ResponseExcel<List<Customer>>.GetResult(-1, Properties.Resources.WrongFile);
             }
-
+            
             var list = new List<Customer>();
 
             using (var stream = new MemoryStream())
@@ -76,40 +77,12 @@ namespace MISA.CukCuk.WEB.Controllers
                         {
                             cus.Email = worksheet.Cells[row, 9].Value.ToString().Trim();
                         }
-                        else cus.Email = "aa";
                         if (worksheet.Cells[row, 10].Value != null)
                         {
                             cus.Address = worksheet.Cells[row, 10].Value.ToString().Trim();
                         }
-                        else cus.Address = "aa";
                         if (worksheet.Cells[row, 6].Value != null)
-                        {
-                            // Kiểm tra date thuộc dạng nào
-                            string[] arrListStr = (worksheet.Cells[row, 6].Value.ToString().Trim()).Split('/');
-                            String dob = arrListStr[arrListStr.Length - 1];
-
-
-                            // có đủ ngày tháng
-                            if (arrListStr.Length == 3)
-                            {
-                                for (int i = arrListStr.Length - 2; i >= 0; i--)
-                                    dob += "-" + arrListStr[i];
-
-                            }
-                            // thiếu ngày
-                            else if (arrListStr.Length == 2)
-                            {
-                                dob += "-" + arrListStr[0] + "-01";
-                            }
-                            // thiếu cả ngày tháng
-                            else
-                            {
-                                dob += "-01-01";
-                            }
-
-                            dob += "T00:00:00";
-                            cus.DateOfBirth = DateTime.Parse(dob);
-                        }
+                            cus.DateOfBirth = DateTime.ParseExact(worksheet.Cells[row, 6].Value.ToString().Trim(), new string[] { "dd/MM/yyyy", "d/MM/yyyy", "dd/M/yyyy", "d/M/yyyy", "dd/MM/yyyy", "M/yyyy", "yyyy", "MM/yyyy" }, CultureInfo.InvariantCulture);
                         cus.CustomerCode = worksheet.Cells[row, 1].Value.ToString().Trim();
                         cus.FullName = (worksheet.Cells[row, 2].Value.ToString().Trim());
                         cus.CompanyTaxCode = (worksheet.Cells[row, 3].Value.ToString().Trim());

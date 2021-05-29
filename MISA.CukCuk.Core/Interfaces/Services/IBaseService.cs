@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.CukCuk.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace MISA.CukCuk.Core.Interfaces.Services
     /// </summary>
     /// <typeparam name="T">Đối tượng sử dụng service</typeparam>
     /// CreatedBy: NGDuong (24/05/2021)
-    public interface IBaseService<T> where T : class
+    public interface IBaseService<T> where T : BaseEntity
     {
         #region Method
         /// <summary>

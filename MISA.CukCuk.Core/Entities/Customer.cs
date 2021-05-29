@@ -55,7 +55,7 @@ namespace MISA.Common.Entities
         /// <summary>
         /// Mã nhóm khách hàng
         /// </summary>
-        public Guid? CustomerGroupId { get; set; }
+        public Guid CustomerGroupId { get; set; }
         /// <summary>
         /// Số điện thoại
         /// </summary>

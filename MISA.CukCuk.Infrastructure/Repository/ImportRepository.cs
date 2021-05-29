@@ -33,14 +33,14 @@ namespace MISA.CukCuk.Infrastructure.Repository
         /// false: không trùng
         /// </returns>
         /// CreatedBy: NGDuong (28/05/2021)   
-        public bool CheckcustomerCodeExistsInExcelFile(List<T> entities, int index, String CustomerCode)
+        private bool CheckcustomerCodeExistsInExcelFile(List<T> entities, int index, String CustomerCode)
         {
             for (int i = 0; i < index; i++)
             {
                 String code = (entities[i]).GetType().GetProperty($"{typeof(T).Name}Code").GetValue(entities[i]).ToString();
                 if (code == CustomerCode)
                 {
-                    (entities[index]).Status += "Mã khách hàng đã trùng với khách hàng khác trong tệp nhập khẩu.";
+                    (entities[index]).Status += Properties.Resources.Message_Code_Excel;
                     return true;
                 }
             }
@@ -57,14 +57,14 @@ namespace MISA.CukCuk.Infrastructure.Repository
         /// false: không trùng
         /// </returns>
         /// CreatedBy: NGDuong (28/05/2021)
-        public bool CheckPhoneNumberExistsInExcelFile(List<T> entities, int index, String PhoneNumber)
+        private bool CheckPhoneNumberExistsInExcelFile(List<T> entities, int index, String PhoneNumber)
         {
             for (int i = 0; i < index; i++)
             {
                 String phone = (entities[i]).GetType().GetProperty("PhoneNumber").GetValue(entities[i]).ToString();
                 if (phone == PhoneNumber)
                 {
-                    (entities[index]).Status += "SĐT đã trùng với SĐT của khách hàng khác trong tệp nhập khẩu.";
+                    (entities[index]).Status += Properties.Resources.Message_PhoneNumber_Excel;
                     return true;
                 }
             }

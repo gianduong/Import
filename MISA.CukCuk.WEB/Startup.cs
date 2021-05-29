@@ -61,9 +61,7 @@ namespace MISA.CukCuk.WEB
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped(typeof(IBaseImportService<>), typeof(ImportService<>));
             services.AddScoped(typeof(IImportRepository<>), typeof(ImportRepository<>));
-            //customer
-            services.AddScoped<ICustomerService, CustomerService>();
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            //services.AddScoped<ICustomerGroupRepository, CustomerGroupRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

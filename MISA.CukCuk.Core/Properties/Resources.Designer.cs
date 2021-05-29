@@ -61,6 +61,15 @@ namespace MISA.CukCuk.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã khách hàng.
+        /// </summary>
+        public static string CustomerCode {
+            get {
+                return ResourceManager.GetString("CustomerCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mã khách hàng không được phép để trống..
         /// </summary>
         public static string CustomerCode_Null {
@@ -88,11 +97,38 @@ namespace MISA.CukCuk.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hợp lệ.
+        /// </summary>
+        public static string Message_Correct {
+            get {
+                return ResourceManager.GetString("Message_Correct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lỗi người dùng nhập sai định dạng..
         /// </summary>
         public static string moreInfo {
             get {
                 return ResourceManager.GetString("moreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PhoneNumber.
+        /// </summary>
+        public static string PhoneName {
+            get {
+                return ResourceManager.GetString("PhoneName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SĐT.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace MISA.CukCuk.Core.Properties {
         public static string ValidateMsg_EmailExists {
             get {
                 return ResourceManager.GetString("ValidateMsg_EmailExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} đã tồn tại trong hệ thống..
+        /// </summary>
+        public static string ValidateMsg_Exists {
+            get {
+                return ResourceManager.GetString("ValidateMsg_Exists", resourceCulture);
             }
         }
         
